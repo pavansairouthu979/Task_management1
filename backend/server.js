@@ -17,7 +17,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketio(server, {
     cors: {
-        origin: ["http://localhost:5173", "https://augmentik-frontend.onrender.com"],
+        origin: ["http://localhost:5173", "https://task-management1-eight.vercel.app", "https://augmentik-frontend.onrender.com"],
         methods: ["GET", "POST", "PUT", "DELETE"],
         credentials: true
     }
@@ -31,7 +31,7 @@ app.use(express.json());
 
 // Enable CORS
 app.use(cors({
-    origin: ["http://localhost:5173", "https://augmentik-frontend.onrender.com"], // Add production URL here
+    origin: ["http://localhost:5173", "https://task-management1-eight.vercel.app", "https://augmentik-frontend.onrender.com"],
     credentials: true
 }));
 
