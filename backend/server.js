@@ -17,7 +17,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketio(server, {
     cors: {
-        origin: "http://localhost:5173",
+        origin: ["http://localhost:5173", "https://augmentik-frontend.onrender.com"],
         methods: ["GET", "POST", "PUT", "DELETE"],
         credentials: true
     }
@@ -31,9 +31,14 @@ app.use(express.json());
 
 // Enable CORS
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: ["http://localhost:5173", "https://augmentik-frontend.onrender.com"], // Add production URL here
     credentials: true
 }));
+
+// Root Route
+app.get('/', (req, res) => {
+    res.json({ message: 'Augmentik API is running...', status: 'OK' });
+});
 
 // Routes
 app.use('/api/auth', require('./routes/auth'));
